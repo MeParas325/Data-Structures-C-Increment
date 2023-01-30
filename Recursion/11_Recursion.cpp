@@ -1,0 +1,48 @@
+//sort an array using insertion sort with the help of recursion
+#include<iostream>
+using namespace std;
+
+void printArray(int arr[], int n){
+
+    for(int i = 0; i<n; i++){
+        cout << arr[i] << " ";
+    }
+}
+
+void insertionSort(int arr[], int n, int i){
+
+    if(i == n - 1){
+        return;
+    }
+
+    int temp = arr[i];
+    int j = i - 1;
+    for(; j >= 0; j--){ 
+        if(arr[j] > temp){
+            arr[j + 1] = arr[j];
+
+        }else{
+            break;
+        }
+    }
+
+    arr[j + 1] = temp;
+
+    insertionSort(arr, n, ++i);
+        
+}
+
+int main(){
+
+    int arr[] = {5, 3, 76, 2, 7, 1};
+
+    cout<<"Before sorting array is: " << endl;
+    printArray(arr, 6);
+
+    cout << "\nAfter sorting array is: " << endl;
+    insertionSort(arr, 6, 1);
+    printArray(arr, 6);
+
+
+    
+}
